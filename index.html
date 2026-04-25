@@ -29,7 +29,7 @@ html,body{width:100%;height:100dvh;background:var(--bg);font-family:var(--body);
 .rubro-card{background:#0f0f18;border:1px solid var(–border);border-radius:14px;padding:13px 15px;cursor:pointer;transition:all .22s;display:flex;align-items:center;gap:11px;position:relative;overflow:hidden;}
 .rubro-card::before{content:’’;position:absolute;top:0;left:0;right:0;height:1.5px;opacity:0;transition:opacity .22s;}
 .rubro-card:active{transform:scale(.97);}
-.r0{–rc:#00e5a0;}.r1{–rc:#ff6d3b;}.r2{–rc:#a78bfa;}.r3{–rc:#38bdf8;}.r4{–rc:#fb923c;}
+.r0{–rc:#00e5a0;}.r1{–rc:#ff6d3b;}.r2{–rc:#a78bfa;}.r3{–rc:#38bdf8;}.r4{–rc:#fb923c;}.r5{–rc:#f472b6;}.r6{–rc:#facc15;}.r7{–rc:#34d399;}
 .rubro-card:hover{border-color:color-mix(in srgb,var(–rc) 40%,transparent);transform:translateY(-2px);}
 .rubro-card:hover::before,.rubro-card.selected::before{opacity:1;background:linear-gradient(90deg,transparent,var(–rc),transparent);}
 .rubro-card.selected{border-color:color-mix(in srgb,var(–rc) 50%,transparent);background:color-mix(in srgb,var(–rc) 6%,#0f0f18);}
@@ -262,7 +262,10 @@ border-radius:10px;padding:10px 12px;
     <div class="rubro-card r1" data-rubro="1"><span class="rc-icon">📱</span><div><div class="rc-name">Electrónica</div><div class="rc-desc">Precios, cuotas y reservas</div></div></div>
     <div class="rubro-card r2" data-rubro="2"><span class="rc-icon">🏥</span><div><div class="rc-name">Consultorio</div><div class="rc-desc">Turnos y ficha del paciente</div></div></div>
     <div class="rubro-card r3" data-rubro="3"><span class="rc-icon">🏠</span><div><div class="rc-name">Inmobiliaria</div><div class="rc-desc">Propiedades y leads calificados</div></div></div>
-    <div class="rubro-card r4" style="grid-column:1/-1;" data-rubro="4"><span class="rc-icon">👥</span><div><div class="rc-name">Recursos Humanos</div><div class="rc-desc">Postulaciones y entrevistas auto</div></div></div>
+    <div class="rubro-card r4" data-rubro="4"><span class="rc-icon">👥</span><div><div class="rc-name">Recursos Humanos</div><div class="rc-desc">Postulaciones y entrevistas auto</div></div></div>
+    <div class="rubro-card r5" data-rubro="5"><span class="rc-icon">🍽️</span><div><div class="rc-name">Restaurante</div><div class="rc-desc">Reservas, pedidos y delivery</div></div></div>
+    <div class="rubro-card r6" data-rubro="6"><span class="rc-icon">🏨</span><div><div class="rc-name">Hotel</div><div class="rc-desc">Check-in, habitaciones y servicios</div></div></div>
+    <div class="rubro-card r7" style="grid-column:1/-1;" data-rubro="7"><span class="rc-icon">🚌</span><div><div class="rc-name">Empresa de Colectivos</div><div class="rc-desc">Horarios, boletos y reclamos automáticos</div></div></div>
   </div>
   <button class="sel-start" id="selStart" onclick="launchDemo()">Ver demo completo →</button>
 </div>
@@ -440,6 +443,81 @@ const RUBROS = {
       {user:'Hola! vi que tienen búsqueda de vendedores',toasts:['⚡ Mensaje de postulante','🧠 IA: postulación · área ventas','📋 Verifica vacantes activas','🟠 HubSpot: nuevo postulante registrado'],bot:'¡Hola! 👋 ¡Qué bueno que te interese!<br><br>Sí, tenemos abierta búsqueda de <b>Vendedor/a</b> en Posadas.<br><br>Para conocerte mejor:<br>🔹 ¿Cuántos años de experiencia tenés?<br>🔹 ¿Trabajaste en retail o atención al cliente?'},
       {user:'3 años de experiencia, trabajé en comercios y una distribuidora',toasts:['⚡ Info del postulante recibida','🧠 IA evalúa perfil: match alto ✅','📋 n8n puntúa el CV automáticamente','🟠 HubSpot: apto para entrevista'],bot:'¡Tu perfil encaja muy bien! 🎯<br><br>El siguiente paso es una <b>entrevista de 20 minutos</b>.<br><br>¿Tenés disponibilidad esta semana?<br><br>📅 Martes 25 · 10:00 hs<br>📅 Jueves 27 · 16:00 hs'},
       {user:'el jueves a las 16 perfecto',toasts:['⚡ Confirmación de entrevista','🧠 IA registra fecha y hora','🟠 HubSpot: entrevista agendada · Lucas García','🟠 HubSpot: recordatorio automático programado'],bot:'¡Confirmado! 🎉<br><br>📋 <b>Entrevista agendada:</b><br>📅 Jueves 27 · 16:00hs<br>📍 Oficinas GrupoNorte · Posadas<br><br>El día anterior te mandamos un recordatorio con la dirección. ¡Mucho éxito! 💪'},
+    ]
+  },
+  5:{
+    avatar:'🍽️',name:'La Cocina · Restaurante',
+    seller:{name:'Maxi Rodríguez',role:'Encargado de salón',avatar:'👨‍🍳'},
+    crm:{
+      contact:'Carolina Vega',source:'WhatsApp',stage:'Reserva confirmada',score:83,
+      fields:[
+        {l:'Nombre',v:'Carolina Vega'},{l:'Personas',v:'4 comensales'},
+        {l:'Fecha',v:'Sáb 27 · 21:00hs'},{l:'Ocasión',v:'Cumpleaños'},
+        {l:'Seña',v:'$10.000',c:'green'},{l:'Estado',v:'Confirmada ✅',c:'orange'},
+      ],
+      timeline:[
+        {d:'g',t:'<strong>Seña recibida</strong> · $10.000 · reserva confirmada','h':'18:42'},
+        {d:'o',t:'<strong>Encargado notificado</strong> · Maxi Rodríguez','h':'18:42'},
+        {d:'b',t:'Mesa para 4 bloqueada · Sáb 27 · 21:00hs','h':'18:40'},
+        {d:'b',t:'Ocasión registrada · cumpleaños · sorpresa solicitada','h':'18:38'},
+        {d:'y',t:'Primer contacto · consulta de reserva','h':'18:35'},
+      ],
+      msg:'🍽️ <b>Carolina Vega</b> confirmó reserva para <b>4 personas el sábado 27 a las 21:00hs</b>. Es cumpleaños, pidió sorpresa. Seña $10.000 recibida. ¡Coordiná con cocina!'
+    },
+    script:[
+      {user:'Hola! quería reservar una mesa para el sábado a la noche',toasts:['⚡ Trigger: solicitud de reserva','🧠 IA: tipo → reserva de mesa','📋 Consulta disponibilidad del sábado','🟠 HubSpot: nuevo contacto registrado'],bot:'¡Hola! 👋 ¡Bienvenida a <b>La Cocina</b>!<br><br>El sábado tenemos disponibilidad. Contame:<br><br>🔹 ¿Para cuántas personas?<br>🔹 ¿A qué hora preferís?<br>🔹 ¿Es alguna ocasión especial?'},
+      {user:'somos 4, a las 21hs, es cumpleaños de mi pareja',toasts:['⚡ Detalles de reserva recibidos','🧠 IA extrae: 4 personas · 21hs · cumpleaños','📋 n8n bloquea mesa disponible','🟠 HubSpot: ocasión especial registrada · alerta a cocina'],bot:'¡Qué lindo! 🎂 Mesa para <b>4 personas el sábado a las 21:00hs</b> disponible ✅<br><br>Para la ocasión especial podemos preparar una sorpresa con postre y vela.<br><br>Para confirmar la reserva pedimos una seña de <b>$10.000</b>.<br>¿Tu nombre y cómo enviamos la seña?'},
+      {user:'Carolina Vega, les mando por Mercado Pago ahora',toasts:['⚡ Confirmación de pago','🧠 IA extrae nombre del cliente','🟠 HubSpot: perfil creado → Carolina Vega','🟠 HubSpot: etapa → Reserva confirmada · alerta a encargado'],bot:'¡Perfecto Carolina! 🎉 En cuanto acredite el pago te mandamos la confirmación.<br><br>📋 <b>Reserva:</b><br>📅 Sábado 27 · 21:00hs · 4 personas<br>🎂 Sorpresa para cumpleaños incluida<br><br>El sábado al mediodía te mandamos un recordatorio. ¡Hasta pronto! 😊'},
+    ]
+  },
+  6:{
+    avatar:'🏨',name:'Hotel Paraná · Posadas',
+    seller:{name:'Lucía Fernández',role:'Recepción · Hotel Paraná',avatar:'👩‍💼'},
+    crm:{
+      contact:'Diego Morales',source:'WhatsApp',stage:'Reserva pagada',score:90,
+      fields:[
+        {l:'Huésped',v:'Diego Morales'},{l:'Habitación',v:'Doble · Vista río'},
+        {l:'Check-in',v:'Vie 26 · 14:00hs'},{l:'Check-out',v:'Dom 28 · 11:00hs'},
+        {l:'Seña',v:'$30.000',c:'green'},{l:'Estado',v:'Confirmada ✅',c:'orange'},
+      ],
+      timeline:[
+        {d:'g',t:'<strong>Seña confirmada</strong> · $30.000 · reserva activa','h':'13:20'},
+        {d:'o',t:'<strong>Recepción notificada</strong> · Lucía Fernández','h':'13:20'},
+        {d:'b',t:'Habitación 204 bloqueada · Vie 26 al Dom 28','h':'13:18'},
+        {d:'b',t:'Preferencias guardadas · vista río · piso alto','h':'13:16'},
+        {d:'y',t:'Primer contacto · consulta de disponibilidad','h':'13:12'},
+      ],
+      msg:'🏨 <b>Diego Morales</b> confirmó reserva habitación doble vista río · <b>Vie 26 al Dom 28</b>. Seña $30.000 recibida. Preferencia: piso alto. ¡Asignale habitación 204!'
+    },
+    script:[
+      {user:'Hola! tienen habitaciones disponibles este fin de semana?',toasts:['⚡ Trigger: consulta de disponibilidad','🧠 IA: tipo → reserva hotelera','📋 Consulta disponibilidad Vie-Dom','🟠 HubSpot: nuevo lead registrado'],bot:'¡Hola! 👋 Bienvenido al <b>Hotel Paraná</b> en Posadas.<br><br>Sí, tenemos disponibilidad este fin de semana. ¿Qué tipo de habitación buscás?<br><br>🛏️ <b>Simple</b> — $18.000/noche<br>🛏️ <b>Doble</b> — $26.000/noche<br>🛏️ <b>Doble vista río</b> — $32.000/noche<br><br>¿Cuántas noches serían?'},
+      {user:'doble con vista al río, viernes y sábado, somos 2',toasts:['⚡ Selección recibida','🧠 IA: doble · vista río · 2 noches','📋 Verifica habitaciones disponibles','🟠 HubSpot: interés registrado · lead calificado'],bot:'¡Perfecto! Tenemos disponible la <b>Habitación Doble Vista Río</b> 🌊<br><br>📋 Resumen:<br>📅 Check-in: Viernes · desde las 14:00hs<br>📅 Check-out: Domingo · hasta las 11:00hs<br>💰 Total: $64.000 (2 noches)<br><br>Incluye desayuno buffet. Para confirmar pedimos seña de $30.000. ¿Tu nombre?'},
+      {user:'Diego Morales, prefiero piso alto si hay',toasts:['⚡ Preferencia del huésped recibida','🧠 IA extrae nombre y preferencia','🟠 HubSpot: perfil creado → Diego Morales · pref. piso alto','🟠 HubSpot: etapa → Reserva pendiente de pago'],bot:'¡Anotado Diego! 🙌 Te asignamos una habitación en piso alto con vista al río.<br><br>Enviá la seña de <b>$30.000</b> para confirmar:<br>🏦 Alias: <b>hotelparana.posadas</b><br><br>Recibido el pago te mandamos la confirmación con todos los detalles del check-in. ¡Nos vemos el viernes! 😊'},
+    ]
+  },
+  7:{
+    avatar:'🚌',name:'Crucero del Norte · Líneas',
+    seller:{name:'Atención al Pasajero',role:'Operadora · Crucero del Norte',avatar:'👩‍💻'},
+    crm:{
+      contact:'Ramón Giménez',source:'WhatsApp',stage:'Boleto emitido',score:76,
+      fields:[
+        {l:'Pasajero',v:'Ramón Giménez'},{l:'DNI',v:'25.830.441'},
+        {l:'Tramo',v:'Posadas - Bs. As.'},{l:'Salida',v:'Sáb 27 · 20:30hs'},
+        {l:'Asiento',v:'14A · Semi-cama',c:'green'},{l:'Estado',v:'Boleto emitido',c:'orange'},
+      ],
+      timeline:[
+        {d:'g',t:'<strong>Pago confirmado</strong> · boleto emitido automáticamente','h':'10:55'},
+        {d:'o',t:'<strong>Operadora notificada</strong> · confirmación enviada al pasajero','h':'10:55'},
+        {d:'b',t:'Asiento 14A bloqueado · Sáb 27 · servicio 204','h':'10:53'},
+        {d:'b',t:'Datos capturados · Ramón Giménez · DNI 25830441','h':'10:51'},
+        {d:'y',t:'Primer contacto · consulta de horarios Posadas-BsAs','h':'10:48'},
+      ],
+      msg:'🚌 <b>Ramón Giménez</b> compró boleto <b>Posadas - Bs. As. · Sáb 27 · 20:30hs · Asiento 14A</b>. Pago confirmado. Boleto enviado por WhatsApp automáticamente.'
+    },
+    script:[
+      {user:'Hola! a qué hora salen los colectivos a Buenos Aires el sábado?',toasts:['⚡ Trigger: consulta de horarios','🧠 IA: ruta Posadas - Bs. As. · sábado','📋 Consulta sistema de horarios','🟠 HubSpot: nuevo pasajero registrado'],bot:'¡Hola! 👋 Bienvenido a <b>Crucero del Norte</b>.<br><br>Salidas el <b>sábado</b> desde Posadas hacia Buenos Aires:<br><br>🚌 <b>08:00hs</b> · Semi-cama · $32.000<br>🚌 <b>14:30hs</b> · Cama ejecutivo · $48.000<br>🚌 <b>20:30hs</b> · Semi-cama · $32.000<br><br>¿Para cuántas personas y qué servicio te interesa?'},
+      {user:'para 1 persona, el de las 20:30, semi-cama',toasts:['⚡ Selección de servicio','🧠 IA: 1 pasajero · 20:30 · semi-cama','📋 Verifica disponibilidad y asientos','🟠 HubSpot: interés registrado · consulta activa'],bot:'¡Hay lugares disponibles! ✅<br><br>📋 <b>Servicio 204</b><br>🚌 Posadas - Buenos Aires<br>📅 Sábado · 20:30hs · Llegada Dom 08:45hs<br>💰 $32.000 por persona<br><br>Para reservar necesito tu nombre y DNI 😊'},
+      {user:'Ramón Giménez, DNI 25830441',toasts:['⚡ Datos del pasajero recibidos','🧠 IA extrae nombre y DNI','🟠 HubSpot: perfil creado → Ramón Giménez','🟠 HubSpot: etapa → Boleto pendiente de pago'],bot:'¡Perfecto Ramón! 🎉 Reserva lista.<br><br>Para emitir el boleto transferí <b>$32.000</b>:<br>🏦 Alias: <b>crucerodelnorte.tickets</b><br><br>Confirmado el pago te enviamos el <b>boleto digital por WhatsApp</b> con código QR para abordar. ¡Buen viaje! 🚌'},
     ]
   }
 };
